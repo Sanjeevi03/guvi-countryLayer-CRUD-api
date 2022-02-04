@@ -1,3 +1,6 @@
+table{
+   margin: auto;
+}
 table,td,th{
    border: 1px solid black;
    border-collapse: collapse;
@@ -13,6 +16,7 @@ img{
    width: 45px;
 }
 .sortBox{
+   text-align: center;
    margin:1rem;
 }
 .sortBox button{

@@ -9,9 +9,7 @@ function Crud() {
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
-      const res = await axios.get(
-        `http://api.countrylayer.com/v2/all?access_key=ef414b206d85663b55c162855f8216e1`
-      );
+      const res = await axios.get('https://restcountries.com/v3.1/all');
       setValue(res.data);
       setLoading(false);
     };
@@ -51,22 +49,22 @@ function Crud() {
                 <h1>Loading...</h1>
               ) : asc ? (
                 value
-                  .sort((a, b) => (a.name > b.name ? 1 : -1))
+                  .sort((a, b) => (a.name.common > b.name.common ? 1 : -1))
                   .map((i, j) => (
                     <tr key={j}>
                       <td>{j + 1}</td>
-                      <td>{i.name}</td>
+                      <td>{i.name.common}</td>
                       <td>{i.capital ? i.capital : "Not Mentioned"}</td>
                       <td>{i.region}</td>
                     </tr>
                   ))
               ) : (
                 value
-                  .sort((a, b) => (a.name < b.name ? 1 : -1))
+                  .sort((a, b) => (a.name.common < b.name.common ? 1 : -1))
                   .map((i, j) => (
                     <tr key={j}>
                       <td>{j + 1}</td>
-                      <td>{i.name}</td>
+                      <td>{i.name.common}</td>
                       <td>{i.capital ? i.capital : "Not Mentioned"}</td>
                       <td>{i.region}</td>
                     </tr>
@@ -81,3 +79,4 @@ function Crud() {
 }
 //
 export default Crud;
+// `http://api.countrylayer.com/v2/all?access_key=ef414b206d85663b55c162855f8216e1`
